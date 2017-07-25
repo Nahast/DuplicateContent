@@ -28,7 +28,26 @@ def main():
     print("\n--=================== SEO PROJECT ===================--\n")
     print("-- EPITA MTI 2018 -- Subject 1")
     print("Contributors : Jouffret Romain (jouffr_a), Barat Valentin (barat_v)\n")
-    print("Using :\n")
+    print("\n--=================== Checking system :  ===================--\n\n")
+    if os.system("which python") != 0:
+        print('This program needs python 2.X to run. Please isntall it first.')
+        return
+    if os.system("which python3") != 0:
+        print('This program needs python 3.X to run. Please isntall it first.')
+        return
+    if os.system("which pip") != 0:
+        print('This program needs pip for packages control. Please isntall it first.')
+        return
+    if os.system("pip install scrapy") != 0:
+        print('This program needs scrapy to run. Please isntall it first.')
+        return
+    if os.system("pip install xlsxwriter") != 0:
+        print('This program needs xlsxwriter to run. Please isntall it first.')
+        return
+    if os.system("pip install pandas") != 0:
+        print('This program needs pandas to run. Please isntall it first.')
+        return
+    print("\n--===================  Using :  ===================--\n\n")
     os.system("python --version")
     os.system("python3 --version")
     os.system("pip --version")
@@ -55,15 +74,15 @@ def main():
     for item in allt :
         x += 1
         j = 0
-        print(x, end='')
-        print(' :', end='')
+        #print(x, end='')
+        #print(' :', end='')
         colmn = list()
         for comp in allt :
             perc = round(jaccard(item, comp) * 100, 2)
-            print(' | ', perc , end='')
+            #print(' | ', perc , end='')
             colmn.append(jaccard(item, comp) * 100)
         csvtab.append(colmn)
-        print('|')
+        #print('|')
 
     df = pd.DataFrame(csvtab)
     df.to_csv('test.csv', index=False, header=False)
