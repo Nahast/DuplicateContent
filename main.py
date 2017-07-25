@@ -2,6 +2,8 @@ import sys
 import pandas as pd
 from pathlib import Path
 import xlsxwriter
+import scrapy
+from duplicated_content.duplicated_content.spiders import jobs 
 
 # ===== SHINGLING ======
 #
@@ -23,6 +25,10 @@ def jaccard(set1, set2):
 # ===== MAIN ======
 #
 def main():
+    process = CrawlerProcess()
+    process.crawl(jobs.JobsSpider())
+    process.start()
+
     fil = Path('items.txt')
     f = open('items.txt', 'r')
     #print(''.join(f.readline()))
