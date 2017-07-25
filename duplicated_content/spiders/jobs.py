@@ -7,7 +7,7 @@ from scrapy import Request
 class JobsSpider(scrapy.Spider):
     name = "jobs"
     allowed_domains = ["craigslist.org"]
-    start_urls = ['https://sanfrancisco.craigslist.org/search/egr']
+    start_urls = ['https://sfbay.craigslist.org/search/egr']
 
     def parse(self, response):
         jobs = response.xpath('//p[@class="result-info"]')

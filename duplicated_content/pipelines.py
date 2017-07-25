@@ -8,11 +8,11 @@ from pathlib import Path
 
 class DuplicatedContentPipeline(object):
     def process_item(self, item, spider):
-        fil = Path('../items.txt')
+        fil = Path('items.txt')
         if fil.is_file():
-            f = open('../items.txt', 'a+')
+            f = open('items.txt', 'a+')
         else:
-            f = open('../items.txt', 'w+')
+            f = open('items.txt', 'w+')
         f.write(''.join(str(it) for it in item.items()) + '\n')
         f.close()
         return item
