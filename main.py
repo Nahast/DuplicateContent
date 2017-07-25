@@ -1,5 +1,7 @@
 import sys
+import pandas as pd
 from pathlib import Path
+import xlsxwriter
 
 # ===== SHINGLING ======
 #
@@ -25,11 +27,31 @@ def main():
     f = open('items.txt', 'r')
     #print(''.join(f.readline()))
     texts = f.readlines()
+    allt = list()
     for t in texts:
-        shingles1 = set(get_shingles(t, size=SHINGLE_SIZE))
-        shingles2 = set(get_shingles(t, size=SHINGLE_SIZE))
+        allt.append(set(get_shingles(t, size=SHINGLE_SIZE)))
+    print(len(texts))
+    print(len(allt))
+    x = -1
+    csvtab = list()
+    for item in allt :
+        x += 1
+        j = 0
+        print(x, end='')
+        print('  : \t', end='')
+        colmn = list()
+        for comp in allt :
+            perc = round(jaccard(item, comp) * 100, 2)
+            print('  | ', perc , end='')
+            colmn.append(jaccard(item, comp) * 100)
+        csvtab.append(colmn)
+        print('\t|')
 
-    print(jaccard(shingles1, shingles2))
+    df = pd.DataFrame(csvtab)
+    df.to_csv('test.csv', index=False, header=False)
+    with pd.ExcelWriter ('test.xlsx') as writer:
+                df.to_excel(writer, sheet_name = 'sheet1',engine='xlsxwriter')
+    #print(jaccard(shingles1, shingles2))
     print("\n*+*+*+*+*+* END *+*+*+*+*+*\n")
     # ADD TIMER
 

@@ -13,6 +13,6 @@ class DuplicatedContentPipeline(object):
             f = open('../items.txt', 'a+')
         else:
             f = open('../items.txt', 'w+')
-        f.write(''.join(str(it) for it in item.items()) + '\n flag \n')
+        f.write(''.join(str(it) for it in item.items()) + '\n')
         f.close()
         return item
