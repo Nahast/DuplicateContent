@@ -26,7 +26,7 @@ class JobsSpider(scrapy.Spider):
             yield Request(absolute_url, callback=self.parse_page, meta={'URL': absolute_url, 'Title': title, 'Address':address})
 
             relative_next_url = response.xpath('//a[@class="button next"]/@href').extract_first()
-            absolute_next_url = "https://newyork.craigslist.org" + relative_next_url
+            absolute_next_url = "https://sfbay.craigslist.org" + relative_next_url
             yield Request(absolute_next_url, callback=self.parse)
 
     def parse_page(self, response):
