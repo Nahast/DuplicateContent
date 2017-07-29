@@ -120,24 +120,24 @@ def main():
     # if os.system("which python") != 0:
     #     print('This program needs python 2.X to run. Please isntall it first.')
     #     return
-    # if os.system("which python3") != 0:
-    #     print('This program needs python 3.X to run. Please isntall it first.')
+    if os.system("which python3") != 0:
+        print('This program needs python 3.X to run. Please isntall it first.')
     #     return
     # if os.system("which pip3") != 0:
     #     print('This program needs pip3 for packages control. Please isntall it first.')
     #     return
-    # if os.system("pip3 install scrapy") != 0:
-    #     print('This program needs scrapy to run. Please isntall it first.')
-    #     return
+    if os.system("pip3 install scrapy") != 0:
+        print('This program needs scrapy to run. Please isntall it first.')
+        return
     # if os.system("pip3 install xlsxwriter") != 0:
     #     print('This program needs xlsxwriter to run. Please isntall it first.')
     #     return
     # if os.system("pip3 install pandas") != 0:
     #     print('This program needs pandas to run. Please isntall it first.')
     #     return
-    # if os.system("pip3 install plotly --upgrade") != 0:
-    #     print('This program needs pandas to run. Please isntall it first.')
-    #     return
+    if os.system("pip3 install plotly --upgrade") != 0:
+        print('This program needs pandas to run. Please isntall it first.')
+        return
     # if os.system("pip3 install --pre xhtml2pdf") != 0:
     #     print('This program needs pandas to run. Please isntall it (with --pre for python3 compat.) first.')
     #     return
