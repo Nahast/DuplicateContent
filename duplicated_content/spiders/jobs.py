@@ -6,8 +6,13 @@ from scrapy import Request
 
 class JobsSpider(scrapy.Spider):
     name = "jobs"
-    allowed_domains = ["craigslist.org"]
-    start_urls = ['https://sfbay.craigslist.org/search/egr']
+    #allowed_domains = ["craigslist.org"]
+    #start_urls = ['https://sfbay.craigslist.org/search/egr']
+
+    def __init__(self, site='', domain=None, *args, **kwargs):
+        super(JobsSpider, self).__init__(*args, **kwargs)
+        self.start_urls = [ site ]
+        self.domain = domain
 
     def parse(self, response):
         jobs = response.xpath('//p[@class="result-info"]')
